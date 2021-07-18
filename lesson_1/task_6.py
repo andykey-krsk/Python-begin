@@ -14,3 +14,15 @@
 # 6-й день: 3,22
 # Ответ: на 6-й день спортсмен достиг результата — не менее 3 км.
 
+distance_start = int(input("Введите начальную дистанцию: "))
+distance_need = int(input("Введите желаемую дистанцию: "))
+
+distance = distance_start
+day = 1
+
+while distance < distance_need:
+    distance *= 1.1
+    print(f"{day}-й день: {round(distance,2)} км")
+    day += 1
+
+print(f"Желаемую дистанцию в {distance_need} км спортсмен достигнет на {day}-й день")
