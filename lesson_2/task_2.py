@@ -19,9 +19,7 @@ i = 0
 while i < list_len:
     if i + 2 > list_len:
         break
-    temp = list_data[i]
-    list_data[i] = list_data[i + 1]
-    list_data[i + 1] = temp
+    list_data[i], list_data[i + 1] = list_data[i + 1], list_data[i]
     i += 2
 
 print(f'Стало - {list_data}')
