@@ -26,6 +26,7 @@ else:
         for i, el in enumerate(my_list):
             if el > num:
                 pos = i+1
+                break
 
         my_list.insert(pos, num)
 

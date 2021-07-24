@@ -29,10 +29,6 @@ for cort in products:
         if analitics.get(key) == None:
             analitics[key] = []
 
-        if key != 'eд':
-            analitics[key].append(val)
-        else:
-            if len(analitics[key]) == 0:
-                analitics[key].append(val)
+        analitics[key].append(val)
 
 print(analitics)
