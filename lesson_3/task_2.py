@@ -2,3 +2,13 @@
 # имя, фамилия, год рождения, город проживания, email, телефон.
 # Функция должна принимать параметры как именованные аргументы.
 # Реализовать вывод данных о пользователе одной строкой.
+
+def user_data(**kwargs):
+    result = ''
+    for el in kwargs.values():
+        result += ' ' + str(el)
+
+    print(result)
+
+
+user_data(firstname='Иван', lastname='Иванов', year=1989, city='Бердищев', email='ivanov@mail.ru', phone='+79009005080')
