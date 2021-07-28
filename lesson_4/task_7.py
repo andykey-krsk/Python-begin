@@ -5,19 +5,15 @@
 # Подсказка: факториал числа n — произведение чисел от 1 до n.
 # Например, факториал четырёх 4! = 1 * 2 * 3 * 4 = 24.
 
-
 def my_generator(n):
-    for i in range(n):
+    for i in range(1, n + 1):
         yield i
 
 
-def fact(n):
-    return n * fact(n - 1)
+num = int(input('Введите число: '))
 
+fact = 1
 
-num = input('Введите число: ')
-
-gen = my_generator(num)
-
-for el in fact(num):
-    print(f'Факториал числа {el} = {el}')
+for el in my_generator(num):
+    fact *= el
+    print(f'Факториал числа {el} = {fact}')
