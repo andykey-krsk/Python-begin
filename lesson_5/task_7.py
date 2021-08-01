@@ -11,4 +11,34 @@
 # [{"firm_1": 5000, "firm_2": 3000, "firm_3": 1000}, {"average_profit": 2000}]
 # Подсказка: использовать менеджер контекста.
 
+import json
+import os
 
+f_name = "my_file_7.txt"
+f_json = "my_file_7.json"
+
+firms_list = []
+firms_profit = {}
+
+profit_sum = 0
+profit_count = 0
+
+if os.path.exists(f_name):
+    with open(f_name, "r", encoding="utf-8") as r_file:
+        profit = 0
+        for line in r_file:
+            content = line.strip("\n").split(" ")
+            profit = int(content[2]) - int(content[3])
+            firms_profit[content[0]] = profit
+
+            if profit > 0:
+                profit_sum += profit
+                profit_count += 1
+
+    firms_list.append(firms_profit)
+    firms_list.append({"average_profit": round((profit_sum / profit_count), 2)})
+
+    with open(f_json, "w", encoding="utf-8") as w_file:
+        json.dump(firms_list, w_file)
+else:
+    print(f"Файл {f_name} не найден")
