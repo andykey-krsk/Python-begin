@@ -6,3 +6,21 @@
 # Проверить работу примера на реальных данных
 # (создать экземпляры класса Position, передать данные, проверить значения атрибутов, вызвать методы экземпляров).
 
+class Worker:
+    def __init__(self, name, surname, position, income):
+        self.name = name
+        self.surname = surname
+        self.position = position
+        self.__income = income
+
+
+class Position(Worker):
+    def get_full_name(self):
+        return self.name + " " + self.surname
+
+    def get_total_income(self):
+        return True
+
+
+my_position = Position("Иван", "Петров", "Директор", 100)
+print(my_position.get_full_name())
