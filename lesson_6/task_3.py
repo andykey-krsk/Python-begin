@@ -7,11 +7,11 @@
 # (создать экземпляры класса Position, передать данные, проверить значения атрибутов, вызвать методы экземпляров).
 
 class Worker:
-    def __init__(self, name, surname, position, income):
+    def __init__(self, name, surname, position, wage, bonus):
         self.name = name
         self.surname = surname
         self.position = position
-        self.__income = income
+        self._income = {"wage": wage, "bonus": bonus}
 
 
 class Position(Worker):
@@ -19,8 +19,9 @@ class Position(Worker):
         return self.name + " " + self.surname
 
     def get_total_income(self):
-        return True
+        return self._income["wage"] + self._income["bonus"]
 
 
-my_position = Position("Иван", "Петров", "Директор", 100)
-print(my_position.get_full_name())
+my_position = Position("Иван", "Петров", "Директор", 10000, 50000)
+print(f"Сотрудник: {my_position.get_full_name()}. \nДолжность: {my_position.position}. \nДоход: {my_position.get_total_income()} рублей")
+
