@@ -9,3 +9,29 @@
 # только если введено число.
 # Класс-исключение должен не позволить пользователю ввести текст (не число) и отобразить соответствующее сообщение.
 # При этом работа скрипта не должна завершаться.
+
+class NumExeption(Exception):
+    def __init__(self, text):
+        self.text = text
+
+
+def input_list():
+    my_list = []
+    while True:
+        try:
+            inp_data = input("Введите число и нажмите Enter: ")
+
+            if inp_data == "stop":
+                print(my_list)
+                break
+
+            if not inp_data.isdigit():
+                raise NumExeption(f"{inp_data} - не является числом")
+            else:
+                my_list.append(int(inp_data))
+
+        except NumExeption as e:
+            print(e)
+
+
+input_list()
