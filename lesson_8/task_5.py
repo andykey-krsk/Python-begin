@@ -9,17 +9,21 @@ class Storage:
         self.__storage = []
 
     def add_to_storage(self, unit):
+        if unit in self.__storage:
+            return
         unit.departament = self.name
         self.__storage.append(unit)
 
-    def storage_to_dep(self, num_unit, to_dep):
-        if to_dep != "Склад":
-            self.__storage
+    def storage_to_dep(self, unit, to_dep):
+        if (to_dep != "Склад") & (unit in self.__storage):
+            self.__storage.remove(unit)
+            unit.departament = to_dep
+            print(f"{unit.name} с серийным номером: {unit.serial_num} перемещен в подразделение {to_dep}")
 
     def catlog_of_storage(self):
         print(f"На складе {len(self.__storage)} единиц техники:")
         for i, item in enumerate(self.__storage):
-            print(f"{i+1}. {item.name} серийный номер: {item.serial_num}")
+            print(f"{i + 1}. {item.name} серийный номер: {item.serial_num}")
 
 
 class Equipment:
@@ -49,7 +53,7 @@ class Copier(Equipment):
 
 unit_1 = Printer("HP", "0001", "Бухгалтерия")
 unit_2 = Scaner("Epson", "0002", "Отдел продаж")
-unit_3 = Copier("Xerox", "0002", "Склад")
+unit_3 = Copier("Xerox", "0003", "Склад")
 
 print(unit_1)
 unit_1.make_print()
@@ -61,7 +65,11 @@ unit_3.make_copy()
 storage = Storage("Склад")
 storage.add_to_storage(unit_1)
 storage.add_to_storage(unit_2)
+storage.add_to_storage(unit_3)
 storage.catlog_of_storage()
 
 print(unit_1)
 print(unit_2)
+
+storage.storage_to_dep(unit_3, "Бухгалтерия")
+print(unit_3)
